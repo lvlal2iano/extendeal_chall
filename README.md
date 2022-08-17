@@ -142,6 +142,7 @@ api/v1/cuadros?filters[autor]=Rembrandt&filters[maxPrecio]=280000000
                 }
             
 			}...
+NOTA: en la carpeta tests, se encuentra el archivo ExtendealChallenge.postman_collection.json. el mismo esta listo para importarlo a postman y tener configurado los endpoints.
 
 ### Fuente de los datos (No es una API)
 https://theartwolf.com/
