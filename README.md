@@ -1,64 +1,150 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+## Challenge Técnico Backend Extendeal
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+### Instalacion Automatica (Ubuntu, Devian, Centos) 
+Stack necesario: Docker y Make.
 
-## About Laravel
+      1 - mkdir extendeal_chall && cd extendeal_chall
+      2 - git clone https://github.com/lvlal2iano/extendeal_chall.git .
+	  3 - make init
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+**Con esto ya estara disponible la api en localhost:8000**
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Instalacion Manual (con Docker)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+      1 - mkdir extendeal_chall && cd extendeal_chall
+      2 - git clone https://github.com/lvlal2iano/extendeal_chall.git .
+	  3 - docker-compose up --build --force-recreate -d --remove-orphans
+	  4 - docker exec -it ${DOCKER_WEP} bash
+    #Despues ejecuta dentro del contenedor lo siguiente 
+	  5 - composer install
+	  6 - cp -f .env.example .env
+	  7 - php artisan key:generate
+	  8 - php artisan octane:install --server="swoole"
+	  9 - php artisan migrate:fresh --seed
+	  10 - php artisan optimize:clear
+	  11 - composer dump-autoload --optimize
+	  12 - php artisan test
+	  13 - php artisan octane:start --server="swoole" --host="0.0.0.0"
+**Con esto ya estara disponible la api en localhost:8000**
 
-## Learning Laravel
+### Instalacion Manual (sin Docker)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+**Stack necesario**: *php8.0, mysql.5.7, Composer2.0*
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+**Extensiones PHP necesarias**: *mbstring xml iconv pcntl gd zip sockets pdo  pdo_mysql bcmath soap*
 
-## Laravel Sponsors
+    1 - mkdir extendeal_chall && cd extendeal_chall
+    2 - git clone https://github.com/lvlal2iano/extendeal_chall.git .
+	3 - composer install
+	4 - cp -f .env.example .env
+	5 - php artisan key:generate
+	6 - php artisan octane:install --server="swoole"
+	7 - php artisan migrate:fresh --seed
+	8 - php artisan optimize:clear
+	9 - composer dump-autoload --optimize
+	10 - php artisan test
+	11 - php artisan octane:start --server="swoole" --host="0.0.0.0"
+  
+**Con esto ya estara disponible la api en localhost:8000**
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### Datos
+Al instalar el proyecto se seedearan 181 registros con informacion real de cuadros reales, lo unico falso es el pais de procedencia que se asignan aleatoriamente a los siguientes paises:
+['GB','VN','VE','UY','UA','TR','TW','SE','ES','SG','SA','PT','PA','MC','MX','FR','BR','IT','AR','US'] (Esta distribucion se realizo a modo de enfocar la informacion ya que al momento de crear se puede utilizar el codigo de cualquier pais).
 
-### Premium Partners
+### Cuadro
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+Campo | Tipo | Obligatorio
+------| -----| -------
+autor  | string | si
+nombre | string | si
+anio_creacion | string con formato Y-m-d | si
+precio | string numerico | no
+alto | string numerico (centimetros) | si
+ancho | string numerico (centimetros) | si
+img_url | string url (centimetros) | no
+sala_id | int Referencia a entidad Sala | si
+pais_procedencia_id | int Referencia a entidad Pais | si
 
-## Contributing
+Ejemplo de cuerpo para crear un Cuadro:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+      {
+                "autor":"Un Autor de prueba",
+                "nombre":"Una Obra de prueba",
+                "anio_creacion":"1901-01-01",
+            	"precio":"100000",
+                "alto":"155",
+                "ancho":"155",
+                "img_url":"http://UnaUrlDePrueba",
+                "sala":5,
+                "procedencia":"AR" 
+      }
+    
+	Notas: 
+	1 - La procedencia se vincula mediante el codigo internacional de paises http://utils.mucattu.com/iso_3166-1.html, si no es un codigo valido da error)
+	2 - Las Salas pueden ser 5: 1 - Sala blanca | 2 - Sala azul | 3 - Sala amarilla | 4 - Sala roja | 5 - Sala purpura.
 
-## Code of Conduct
+### Querys
+Tipo | Query | Descripcion
+-----| ------ | ------
+autor |filters[autor]={text} |Busca coincidencias LIKE %% en el campo autor
+precio maximo |  filters[maxPrecio]={num}  | Filtra por precio maximo
+precio minimo |  filters[minPrecio]={num}  | Filtra por precio minimo
+alto maximo |  filters[maxAlto]={num}  | Filtra por alto maximo
+alto minimo |  filters[minAlto]={num}  | Filtra por alto minimo
+ancho maximo  |  filters[maxAlto]={num}  | Filtra por alto maximo
+ancho minimo  |  filters[minAncho]={num}  | Filtra por ancho minimo
+creacion desde  |  filters[minCreacion]={Y-m-d}  | Filtra por creacion desde
+creacion hasta  |  filters[maxCreacion]={Y-m-d}   | Filtra por creacion hasta
+por sala  | filters[sala]={1-5} |  Filtra por sala
+por procedencia | filters[procedencia]={Code} |  Filtra por procedencia
+fields  |field=campo1,campo2,... | Trae solo los atributos señalados, si se omite se traen todos
+per_page  |per_page={num}|  Establece la cantidad traida por pagina (Por defecto 10)
+page  |page={num}| trae la pagina seleccionada (Por defecto la 1)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Endpoints
+Method | Ruta
+------------- | -------------
+GET  | api/v1/cuadros
+POST | api/v1/cuadros
+GET | api/v1/cuadros/{cuadro} 
+PUT | api/v1/cuadros/{cuadro}
+GET | api/v1/status
 
-## Security Vulnerabilities
+###Ejemplo de response
+api/v1/cuadros?filters[autor]=Rembrandt&filters[maxPrecio]=280000000
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+     {
+        "data": [
+            {
+                "tipo": "Cuadro",
+                "atributos": {
+                    "id": "33",
+                    "nombre": " Anciana leyendo",
+                    "author": "Rembrandt van Rijn",
+                    "precio": "160000000.00",
+                    "anio_creacion": "1655-01-01",
+                    "alto": 144,
+                    "ancho": 168
+                },
+                "relaciones": {
+                    "sala": {
+                        "id": 5,
+                        "nombre": "Sala purpura"
+                    },
+                    "pais_procedencia": {
+                        "codigo": "UA",
+                        "nombre": "Ukraine"
+                    }
+                },
+				"links": {
+                    "self": "http://localhost:8000/api/v1/cuadros/33",
+                    "img": "https://theartwolf.com/wp-content/uploads/2022/01/Rembrandt_-_Old_Woman_Reading_-_1655-328x400.jpg"
+                }
+            
+			}...
 
-## License
+### Fuente de los datos (No es una API)
+https://theartwolf.com/
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+MP
