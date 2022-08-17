@@ -14,6 +14,7 @@ init: ## Init the project
 	docker exec -it ${DOCKER_PHP} php artisan migrate:fresh --seed
 	docker exec -it ${DOCKER_PHP} php artisan optimize:clear
 	docker exec -it ${DOCKER_PHP} composer dump-autoload --optimize
+	docker exec -it ${DOCKER_PHP} php artisan test
 	docker exec -it ${DOCKER_PHP} php artisan octane:start --server="swoole" --host="0.0.0.0"
 	find . \
 	-path ./db -prune \
