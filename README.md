@@ -47,6 +47,9 @@ Stack necesario: Docker y Make.
   
 **Con esto ya estara disponible la api en localhost:8000**
 
+### Autenticacion
+La autenticacion se realiza agregando el campo X-HTTP-USER-ID con el valor de ID de algun usuario registrado (1 al 10).
+
 ### Datos
 Al instalar el proyecto se seedearan 181 registros con informacion real de cuadros reales, lo unico falso es el pais de procedencia que se asignan aleatoriamente a los siguientes paises:
 ['GB','VN','VE','UY','UA','TR','TW','SE','ES','SG','SA','PT','PA','MC','MX','FR','BR','IT','AR','US'] (Esta distribucion se realizo a modo de enfocar la informacion ya que al momento de crear se puede utilizar el codigo de cualquier pais).
