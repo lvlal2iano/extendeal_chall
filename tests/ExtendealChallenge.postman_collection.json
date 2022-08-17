@@ -1,0 +1,210 @@
+{
+	"info": {
+		"_postman_id": "20893e14-6170-4b33-bcd5-c01dec46fe6c",
+		"name": "ExtendealChallenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Listar Cuadros",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-HTTP-USER-ID",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/v1/cuadros",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"cuadros"
+					],
+					"query": [
+						{
+							"key": "filters[autor]",
+							"value": "Rembrandt",
+							"disabled": true
+						},
+						{
+							"key": "filters[minPrecio]",
+							"value": "190000000",
+							"disabled": true
+						},
+						{
+							"key": "filters[minAlto]",
+							"value": "100",
+							"description": "En centimetros",
+							"disabled": true
+						},
+						{
+							"key": "filters[minAncho]",
+							"value": "100",
+							"description": "En centimetros",
+							"disabled": true
+						},
+						{
+							"key": "filters[minCreacion]",
+							"value": "01-01-1610",
+							"description": "d-m-Y",
+							"disabled": true
+						},
+						{
+							"key": "filters[sala]",
+							"value": "5",
+							"description": "del 1 al 5",
+							"disabled": true
+						},
+						{
+							"key": "filters[procedencia]",
+							"value": "BR",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Cuadro",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true,
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-HTTP-USER-ID",
+						"value": "1",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"autor\":\"Un Autor de prueba\",\n    \"nombre\":\"Una Obra de prueba\",\n    \"anio_creacion\":\"1901-01-01\",\n    \"alto\":\"155\",\n    \"ancho\":\"155\",\n    \"img_url\":\"http://UnaUrlDePrueba\",\n    \"sala\":5,\n    \"procedencia\":\"AR\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8000/api/v1/cuadros",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"cuadros"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar Cuadro",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-HTTP-USER-ID",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"autor\":\"Un Autor de prueba Editado\",\n    \"nombre\":\"Una Obra de prueba Editado\",\n    \"anio_creacion\":\"1903-01-01\",\n    \"precio\":10000000,\n    \"alto\":\"160\",\n    \"ancho\":\"160\",\n    \"img_url\":\"http://UnaUrlDePruebaEditado\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8000/api/v1/cuadros/182",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"cuadros",
+						"182"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Cuadro",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-HTTP-USER-ID",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/v1/cuadros/182",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"cuadros",
+						"182"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
