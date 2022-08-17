@@ -102,13 +102,14 @@ per_page  |per_page={num}|  Establece la cantidad traida por pagina (Por defecto
 page  |page={num}| trae la pagina seleccionada (Por defecto la 1)
 
 ### Endpoints
-Method | Ruta
-------------- | -------------
-GET  | api/v1/cuadros
-POST | api/v1/cuadros
-GET | api/v1/cuadros/{cuadro} 
-PUT | api/v1/cuadros/{cuadro}
-GET | api/v1/status
+Method | Ruta | Descripcion
+------- | ------- | ----
+GET | api/v1/cuadros/{cuadro} | Listar un cuadro
+GET  | api/v1/cuadros | Listar cuadros
+POST | api/v1/cuadros | Crear cuadro
+PUT | api/v1/cuadros/{cuadro} | Editar un cuadro
+DELETE | api/v1/cuadros/{cuadro} | Eliminar un cuadro
+GET | api/v1/status | Ver status de la api
 
 ###Ejemplo de response
 api/v1/cuadros?filters[autor]=Rembrandt&filters[maxPrecio]=280000000
