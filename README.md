@@ -74,7 +74,7 @@ Ejemplo de cuerpo para crear un Cuadro:
                 "autor":"Un Autor de prueba",
                 "nombre":"Una Obra de prueba",
                 "anio_creacion":"1901-01-01",
-            	"precio":"100000",
+                "precio":"100000",
                 "alto":"155",
                 "ancho":"155",
                 "img_url":"http://UnaUrlDePrueba",
